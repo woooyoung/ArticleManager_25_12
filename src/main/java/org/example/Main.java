@@ -5,17 +5,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
+    static List<Article> articles = new ArrayList<>();
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
         System.out.println("==프로그램 시작==");
 
-        int lastArticleId = 0;
+        int lastArticleId = 3;
 
-        List<Article> articles = new ArrayList<>();
-
-//        makeTestData();
+        makeTestData();
 
         while (true) {
             System.out.print("명령어 ) ");
@@ -51,9 +52,9 @@ public class Main {
                     System.out.println("   번호  /       날짜       /       제목     /   내용  ");
                     for (int i = articles.size() - 1; i >= 0; i--) {
                         Article article = articles.get(i);
-                        if(Util.getNowStr().split(" ")[0].equals(article.getRegDate().split(" ")[0])) {
+                        if (Util.getNowStr().split(" ")[0].equals(article.getRegDate().split(" ")[0])) {
                             System.out.printf("   %d     /    %s          /    %s     /     %s   \n", article.getId(), article.getRegDate().split(" ")[1], article.getTitle(), article.getBody());
-                        }else {
+                        } else {
                             System.out.printf("   %d     /    %s          /    %s     /     %s   \n", article.getId(), article.getRegDate().split(" ")[0], article.getTitle(), article.getBody());
                         }
 
@@ -140,6 +141,14 @@ public class Main {
         }
         System.out.println("==프로그램 끝==");
         sc.close();
+    }
+
+    /** 게시글 테스트 데이터 생성 **/
+    private static void makeTestData() {
+        System.out.println("==테스트 데이터 생성==");
+        articles.add(new Article(1, "2025-12-07 12:12:12", "2025-12-07 12:12:12", "제목 1", "내용 1"));
+        articles.add(new Article(2, Util.getNowStr(),  Util.getNowStr(), "제목 2", "내용 2"));
+        articles.add(new Article(3,  Util.getNowStr(),  Util.getNowStr(), "제목 3", "내용 3"));
     }
 }
 
