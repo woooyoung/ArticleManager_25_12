@@ -65,14 +65,7 @@ public class Main {
 
                 int id = Integer.parseInt(cmd.split(" ")[2]);
 
-                Article foundArticle = null;
-
-                for (Article article : articles) {
-                    if (article.getId() == id) {
-                        foundArticle = article;
-                        break;
-                    }
-                }
+                Article foundArticle = getArticleById(id);
 
                 if (foundArticle == null) {
                     System.out.println("해당 게시글은 없습니다");
@@ -89,14 +82,7 @@ public class Main {
 
                 int id = Integer.parseInt(cmd.split(" ")[2]);
 
-                Article foundArticle = null;
-
-                for (Article article : articles) {
-                    if (article.getId() == id) {
-                        foundArticle = article;
-                        break;
-                    }
-                }
+                Article foundArticle = getArticleById(id);
 
                 if (foundArticle == null) {
                     System.out.println("해당 게시글은 없습니다");
@@ -109,14 +95,7 @@ public class Main {
 
                 int id = Integer.parseInt(cmd.split(" ")[2]);
 
-                Article foundArticle = null;
-
-                for (Article article : articles) {
-                    if (article.getId() == id) {
-                        foundArticle = article;
-                        break;
-                    }
-                }
+                Article foundArticle = getArticleById(id);
 
                 if (foundArticle == null) {
                     System.out.println("해당 게시글은 없습니다");
@@ -143,12 +122,30 @@ public class Main {
         sc.close();
     }
 
-    /** 게시글 테스트 데이터 생성 **/
+    private static Article getArticleById(int id) {
+//        for(int i = 0; i < articles.size(); i++) {
+//            Article article = articles.get(i);
+//            if (article.getId() == id) {
+//                return article;
+//            }
+//        }
+
+        for (Article article : articles) {
+            if (article.getId() == id) {
+                return article;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 게시글 테스트 데이터 생성
+     **/
     private static void makeTestData() {
         System.out.println("==테스트 데이터 생성==");
         articles.add(new Article(1, "2025-12-07 12:12:12", "2025-12-07 12:12:12", "제목 1", "내용 1"));
-        articles.add(new Article(2, Util.getNowStr(),  Util.getNowStr(), "제목 2", "내용 2"));
-        articles.add(new Article(3,  Util.getNowStr(),  Util.getNowStr(), "제목 3", "내용 3"));
+        articles.add(new Article(2, Util.getNowStr(), Util.getNowStr(), "제목 2", "내용 2"));
+        articles.add(new Article(3, Util.getNowStr(), Util.getNowStr(), "제목 3", "내용 3"));
     }
 }
 
