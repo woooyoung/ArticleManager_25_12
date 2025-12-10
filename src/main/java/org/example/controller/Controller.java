@@ -11,7 +11,7 @@ public class Controller {
         // 구현하지 마세요
     }
 
-    protected boolean isLogined() {
+    public static boolean isLogined() {
         return loginedMember != null;
     }
 
